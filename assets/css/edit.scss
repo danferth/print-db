@@ -1,0 +1,13 @@
+html{
+	background: url('../images/editBG.jpg') no-repeat center center fixed;
+	background-size:cover;
+}
+body{
+	padding:75px 0 0 0;
+}
+.editList{
+	margin-top:0;
+	.input:first-of-type{
+		margin-top:0;
+	}
+}

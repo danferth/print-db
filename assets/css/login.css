@@ -1,0 +1,76 @@
+/* line 2, login.scss */
+html {
+  background: url(../images/loginBG.jpg) no-repeat center center fixed;
+  background-size: cover;
+}
+
+/* line 6, login.scss */
+body {
+  padding: 100px 0 0 0;
+}
+
+/* line 10, login.scss */
+.login {
+  background: rgba(255, 255, 255, 0.3);
+  width: 400px;
+  height: 270px;
+  padding: 20px 50px;
+  margin: 0 auto;
+}
+/* line 17, login.scss */
+.login p.input {
+  margin: 0 0 7px 0;
+}
+/* line 19, login.scss */
+.login p.input:first-of-type {
+  margin-top: 10px;
+}
+/* line 23, login.scss */
+.login form {
+  background: none;
+}
+/* line 26, login.scss */
+.login input {
+  background: #f2f2f2;
+  border: none;
+  padding: 3px 15px;
+  width: 100%;
+  height: 30px;
+  font: 400 16px 'Open Sans',sans-serif;
+  color: #999999;
+  text-shadow: 0 1px 0 white;
+}
+/* line 35, login.scss */
+.login input:focus {
+  outline: none;
+  box-shadow: inset 0 0 3px 1px #33a696;
+  border: 1px solid #33a696;
+}
+/* line 41, login.scss */
+.login label {
+  color: #8c8c8c;
+  font: 400 16px 'Open Sans',sans-serif;
+  text-shadow: 0 1px 0 white;
+}
+/* line 46, login.scss */
+.login input[type="submit"] {
+  height: 40px;
+  background: #3a4a3d;
+  font: normal 25px 'Oleo Script Swash Caps',sans-serif;
+  color: #d9d9d9;
+  text-shadow: 0 1px 0 black;
+  transition: all 250ms;
+}
+/* line 53, login.scss */
+.login input[type="submit"]:hover {
+  background: #dfa80d;
+  color: #fbebbd;
+  text-shadow: 0 1px 0 black;
+}
+/* line 59, login.scss */
+.login h1 {
+  margin: 0;
+  font: normal 35px 'Oleo Script Swash Caps',sans-serif;
+  color: white;
+  text-shadow: 0 1px 0 black;
+}

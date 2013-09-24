@@ -1,0 +1,19 @@
+/* line 1, edit.scss */
+html {
+  background: url("../images/editBG.jpg") no-repeat center center fixed;
+  background-size: cover;
+}
+
+/* line 5, edit.scss */
+body {
+  padding: 75px 0 0 0;
+}
+
+/* line 8, edit.scss */
+.editList {
+  margin-top: 0;
+}
+/* line 10, edit.scss */
+.editList .input:first-of-type {
+  margin-top: 0;
+}

@@ -1,0 +1,175 @@
+/* line 2, list.scss */
+html {
+  background: url("../images/listBG.jpg") no-repeat center center fixed;
+  background-size: cover;
+}
+
+/* line 7, list.scss */
+.wrapper {
+  width: 95%;
+  margin: 0 auto;
+}
+
+/* line 11, list.scss */
+header {
+  height: 32px;
+  width: 320px;
+  background: #a7e4dc;
+  border-radius: 0 0 10px 0;
+}
+/* line 16, list.scss */
+header form#logout {
+  display: inline-block;
+  margin: -2px 0 0 0;
+}
+/* line 19, list.scss */
+header form#logout input[type="submit"] {
+  border: none;
+  height: 32px;
+  color: #3a4a3d;
+  background: #6dd2c4;
+  padding: 6px 20px 7px 20px;
+  font: 300 14px 'Open Sans', sans-serif;
+  border-right: 1px solid #3a4a3d;
+  text-shadow: none;
+  transition: all 175ms;
+}
+/* line 29, list.scss */
+header form#logout input[type="submit"]:hover {
+  background: #46c6b5;
+  color: #3a4a3d;
+  text-shadow: none;
+}
+/* line 36, list.scss */
+header .welcome {
+  font: 300 14px 'Open Sans', sans-serif;
+  color: #3a4a3d;
+  margin: 0 0 0 -6px;
+  height: 32px;
+  padding: 6px 75px 7px 25px;
+  text-shadow: 0 1px 0 #bbeae4;
+  display: inline-block;
+}
+
+/* line 46, list.scss */
+h1 {
+  text-align: center;
+  margin: 50px 0 3px 0;
+  font: normal 50px 'Oleo Script Swash Caps',sans-serif;
+  color: white;
+  text-shadow: 0 1px 0 #242d25;
+  letter-spacing: 2px;
+}
+
+/* line 55, list.scss */
+table.theList {
+  border-collapse: collapse;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.75);
+}
+/* line 60, list.scss */
+table.theList thead th {
+  background: #cccccc;
+  color: white;
+  padding: 5px 10px;
+  font: 800 13px 'Open Sans', sans-serif;
+  color: #333333;
+  text-shadow: 0 1px 0 white;
+  border-right: 1px solid #b3b3b3;
+}
+/* line 68, list.scss */
+table.theList thead th:last-of-type {
+  border-right: none;
+}
+/* line 72, list.scss */
+table.theList tr {
+  border-bottom: 1px solid #cccccc;
+  cursor: pointer;
+}
+/* line 75, list.scss */
+table.theList tr:hover {
+  background: #e2f6f3;
+}
+/* line 79, list.scss */
+table.theList td {
+  text-align: center;
+  padding: 5px 10px;
+  border-right: 1px solid #cccccc;
+}
+/* line 83, list.scss */
+table.theList td:last-of-type {
+  border-right: none;
+}
+/* line 87, list.scss */
+table.theList td.desc {
+  width: 250px;
+  text-align: left;
+}
+/* line 92, list.scss */
+table.theList .bullet {
+  font-family: 'print',sans-serif;
+}
+/* line 95, list.scss */
+table.theList a {
+  text-decoration: none;
+  color: #3a4a3d;
+  font-weight: 300;
+}
+/* line 99, list.scss */
+table.theList a:hover {
+  text-shadow: 0 0 2px #277f73;
+}
+/* line 103, list.scss */
+table.theList .alerted {
+  background: #f7d575;
+}
+/* line 106, list.scss */
+table.theList .message {
+  color: #c22d02;
+}
+
+/* line 110, list.scss */
+tr:nth-child(odd) {
+  background: rgba(255, 255, 255, 0.6);
+}
+
+/* line 117, list.scss */
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 35%;
+  margin: 0;
+  padding: 5px 0 6px 20px;
+  border-radius: 0 10px 0 0;
+  background: #a92702;
+}
+/* line 126, list.scss */
+footer p {
+  display: inline-block;
+  color: #f7d575;
+  font: normal 20px 'Flamenco', serif;
+  margin: 0;
+  padding: 0;
+}
+/* line 133, list.scss */
+footer button {
+  border: none;
+  background: #902102;
+  color: #fae3a5;
+  font: 400 15px 'Open Sans', sans-serif;
+  padding: 5px 20px;
+  margin: 0 3px;
+  transition: all 200ms;
+  border-radius: 2px;
+}
+/* line 142, list.scss */
+footer button:hover {
+  background: #761b02;
+  box-shadow: inset 0 0 10px #441001;
+}
+/* line 146, list.scss */
+footer button:active {
+  background: #441001;
+  box-shadow: inset 0 0 15px black;
+}
