@@ -11,16 +11,16 @@ $from = $_POST['from'];
 $to = array();
 
 if(isset($_POST['marketing'])){
-	$to[] = "marketing@htslabs.com";
+	$to[] = "";
 }
 if(isset($_POST['admin'])){
-	$to[] = "assoc@htslabs.com";
+	$to[] = "";
 }
 if(isset($_POST['warehouse'])){
-	$to[] = "maritza@htslabs.com";
+	$to[] = "";
 }
 if(isset($_POST['purchasing'])){
-	$to[] = "purchase@hplc1.com";
+	$to[] = "";
 }
 
 
