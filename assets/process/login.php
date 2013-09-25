@@ -1,4 +1,6 @@
 <?php 
+session_start();
+
 include "../connection.php";
 require_once "../functions.php";
 
@@ -17,6 +19,7 @@ if(isset($_POST['submit'])){
 		$hashedTestPass = hash('sha512',$testPass);
 	
 	if($hashedTestPass === $result['pass']){
+			$_SESSION['secure'] = $result['salt'];
 			queryRedirect('list',$result['ID']);
 		}else{
 			

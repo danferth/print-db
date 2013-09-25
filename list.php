@@ -2,6 +2,10 @@
 session_start();
 include "assets/connection.php";
 require_once "assets/functions.php";
+if(!isset($_SESSION['secure'])){
+	session_destroy();
+	redirect('index');
+}
 sessionTimeout();
 $_SESSION['timeout'] = time();
 
