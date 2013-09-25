@@ -18,6 +18,6 @@ Feel free to edit and such as you please.
 -------------------------
 ###Things to do
 - ~~redo the login backend for better security, as of now not hashing the passwords (big no no)~~
-- create admin column in db
+- ~~create admin column in db~~
 - create admin page for adding new users
 - refine `install.php` with beter error reporting
