@@ -1,10 +1,14 @@
 <?php 
 include '../connection.php';
-include '../functions.php';
 //script variables***************************************************************
+$db_user = 'root';
+$db_pass = '';
+$db_server = 'localhost';
+$db_name = 'test_db';
+$dsn = "mysql:host=".$db_server.";dbname=".$db_name;
 
 $firstUser = "dan";
-$firstPass = "password";
+$initialPass = "password";
 $admin = 1;
 
 //connect to MySQL & Database*******************************************************
@@ -89,7 +93,7 @@ if($result->rowCount()>0)
 //enter first user*****************************************************************
 
 
-$q = ("SELECT * FROM users WHERE ID=1 LIMIT 1");
+$q = ("SELECT * FROM users LIMIT 1");
 $query = $db->query($q);
 $result = $query->fetch(PDO::FETCH_ASSOC);
 if($result) {
@@ -99,10 +103,31 @@ if($result) {
 	echo "<p>entering first user...</p>";
 	
 	
-	
-createFirstUser($firstUser, $firstPass, $db);
+//Create first user********************************************	
+//first user only, is admin
+$admin = 1; 
 
+$createdSalt = rand(1000,1000000);
+$suppliedPass = $initialPass;
+$password = $suppliedPass.$createdSalt;
+$hashedPass = hash('sha512',$password);
+
+$q = $db->prepare("INSERT INTO users (`ID`, `user`, `pass`, `salt`, `admin`) VALUES (NULL,:user, :pass, :salt, :admin)");
+	$q->bindParam(":user", $firstUser);
+	$q->bindParam(":pass", $hashedPass);
+	$q->bindParam(":salt", $createdSalt);
+	$q->bindParam(":admin", $admin);
+	$q->execute();
+
+if(!$q){
+		die(print_r($db->errorInfo(), TRUE));
+	}
+	if($q){
+		echo "<p><strong>first user entered...</strong></p>";
+		$q->closeCursor();
+	}
 }
+
 //output user and close connection********************************************************
 $q = "SELECT * FROM users";
 $result = $db->query($q);
