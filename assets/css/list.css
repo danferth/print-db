@@ -173,3 +173,42 @@ footer button:active {
   background: #441001;
   box-shadow: inset 0 0 15px black;
 }
+@media all and (max-width: 1175px) {
+  /* line 117, list.scss */
+  footer {
+    width: 50%;
+  }
+}
+@media all and (max-width: 835px) {
+  /* line 117, list.scss */
+  footer {
+    width: 100%;
+    border-radius: 0;
+  }
+}
+
+/* line 160, list.scss */
+.adminButton {
+  position: fixed;
+  top: 0;
+  right: 75px;
+  margin: 0;
+  font: normal 30px 'print', sans-serif;
+  color: #fae3a5;
+  border: none;
+  background: #902102;
+  background: linear-gradient(to top, #902102 0%, #902102 90%, #441001 100%);
+  padding: 12px 6px 0px 6px;
+  border-radius: 0 0 2px 2px;
+  opacity: .5;
+  transition: all 200ms;
+}
+/* line 174, list.scss */
+.adminButton:hover {
+  opacity: 1;
+}
+/* line 177, list.scss */
+.adminButton:active {
+  background: linear-gradient(to top, #902102 0%, #902102 20%, #441001 100%);
+  color: #fbebbd;
+}

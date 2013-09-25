@@ -143,20 +143,20 @@ form .formP {
 }
 
 /* line 119, style.scss */
-.addItem, .email, .editList {
+.addItem, .email, .editList, .adduser {
   width: 700px;
   padding: 10px 30px;
   margin: 75px auto 0 auto;
   position: relative;
 }
 /* line 124, style.scss */
-.addItem:after, .email:after, .editList:after {
+.addItem:after, .email:after, .editList:after, .adduser:after {
   content: "";
   display: table;
   clear: both;
 }
 /* line 129, style.scss */
-.addItem .close, .email .close, .editList .close {
+.addItem .close, .email .close, .editList .close, .adduser .close {
   position: absolute;
   top: 5px;
   right: 5px;
@@ -172,7 +172,12 @@ form .formP {
   font: 300 11px 'OpenSans', sans-serif;
 }
 /* line 143, style.scss */
-.addItem .close:hover, .email .close:hover, .editList .close:hover {
+.addItem .close:hover, .email .close:hover, .editList .close:hover, .adduser .close:hover {
   color: #4d4d4d;
   background: rgba(255, 255, 255, 0.5);
+}
+
+/* line 149, style.scss */
+form.adduser {
+  width: 450px;
 }

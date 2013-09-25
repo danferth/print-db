@@ -12,5 +12,3 @@ if(isset($_POST['logout'])){
 
 
  ?>
-
- <h1>hello logout</h1>

@@ -13,13 +13,14 @@ if(!isset($_SESSION['user'])){
 	$userResult = $q->fetch(PDO::FETCH_ASSOC);
 	
 	$_SESSION['user'] = $userResult['user'];
+	$_SESSION['admin'] = $userResult['admin'];
+	$q->closeCursor();
 	
 	$welcomeMessage = "<p class='welcome'>Welcome ". $_SESSION['user']."</p>";
 }else{
 	$welcomeMessage = "<p class='welcome'>Logged in as: ". $_SESSION['user']."</p>";
 }
-
-
+dbClose();
 
 ?>
 
@@ -36,13 +37,44 @@ if(!isset($_SESSION['user'])){
 	<script src="assets/coffee/tablesorter.js"></script>
 </head>
 <body>
+<!-- header with logout****************************************************** -->
 <header>	
 <form id="logout" action="assets/process/logout.php" method="POST">
 <input type="submit" name="logout" value="logout">
 </form>
-
 <?php echo $welcomeMessage; ?>
 </header>
+<!-- admin*********************************************************************** -->
+<?php
+if($_SESSION['admin'] == 1){
+	echo "<button class='adminButton'>!</button>";
+}
+?>
+<form action="assets/process/adduser.php" class="adduser" method="POST">
+	<button class="close">x</button>
+	<?php
+		if(isset($_GET['message'])){
+			if($_GET['message'] == 'badpass'){
+				echo "<p class='alert'>PASSWORDS DO NOT MATCH</p>";
+			}
+			if($_GET['message'] == 'userAlreadyExists'){
+				echo "<p class='alert'>USER NAME ALREADY IN USE</p>";
+			}
+		}
+	?>
+	<h2>Add new user</h2>
+	<p class="input"><input type="text" name="username" required><label for="username">user name</label></p>
+	<p class="input"><input type="password" name="password" required><label for="password">password</label></p>
+	<p class="input"><input type="password" name="passwordConfirm" required><label for="passwordConfirm">repeat password</label></p>
+	<p class="check"><input type="checkbox" name="isAdmin"><label for="isAdmin">will this user be admin?</label></p>
+	<input type="submit" name="submit" value="add user">
+
+</form>
+
+</div>
+
+
+<!-- The List******************************************************************* -->
 <div class="wrapper">
 <h1>The List</h1>
 	<table class="theList" id="list">
@@ -92,12 +124,9 @@ while($db_field = $result->fetch(PDO::FETCH_ASSOC)){
 <?php
 //close connection to mySQL
 $result->closeCursor();
-dbClose();	
-//form to add records
-
-//******************************
+dbClose();
 ?>
-
+<!-- form to add records*************************************************** -->
 <form class="addItem" action='assets/process/add.php' method='Post'>
 	<button class="close">x</button>
 	<h2>Add 2 the List</h2>
@@ -116,7 +145,7 @@ dbClose();
   		<input type='submit' name='submit' value='submit'>
 	</div>
 </form>
-
+<!-- form for email************************************************************** -->
 <form class="email" action="assets/process/mail.php" method="POST">
 	<button class="close">x</button>
 	<h2>email yo peeps</h2>
@@ -133,13 +162,12 @@ dbClose();
 		<p><input type="submit" name="send" value="send"></p>
 	</div>
 </form>
-
-
-
+<!-- footer******************************************************** -->
 <footer>
 	<p>Actions:</p>
 	<button class="addButton">Add 2 the List</button>
 	<button class="emailButton">email some peeps</button>
+
 </footer>
 
 <script>
@@ -170,7 +198,7 @@ $('.ordered').icon("O");
 $('.message').icon("A");
 
 //if alert checked then add class alerted to tr
-$('.alert').hide();
+$('td.alert').hide();
 $('.alert').each(function(){
   if($(this).text() != 0){
   $(this).closest('tr').addClass('alerted');
@@ -180,11 +208,32 @@ $('.alert').each(function(){
 
 
 //form actions
-$('.addItem, .email').hide();
+$('.addItem, .email, .adduser').hide();
+
+//check for message ad display adduser if true
+var urlString = String(document.location);
+var test1 = "?message=badpass";
+var test2 = "?message=userAlreadyExists";
+
+if(urlString.indexOf(test1) != -1){
+	$('body').css({'background':'rgba(0,0,0,.45)'});
+	$('.wrapper').hide();
+	$('.adduser').fadeIn(200);	
+}
+if(urlString.indexOf(test2) != -1){
+	$('body').css({'background':'rgba(0,0,0,.45)'});
+	$('.wrapper').hide();
+	$('.adduser').fadeIn(200);	
+}
+
+
 
 $('.addButton').on('click',function(){
-	if($('.emailvisible')){
+	if($('.email:visible')){
 		$('.email').hide();
+	}
+	if($('.adduser:visible')){
+		$('.adduser').hide();
 	}
 	$('body').css({'background':'rgba(0,0,0,.45)'});
 	$('.wrapper').hide();
@@ -195,9 +244,24 @@ $('.emailButton').on('click',function(){
 	if($('.addItem:visible')){
 		$('.addItem').hide();
 	}
+	if($('.adduser:visible')){
+		$('.adduser').hide();
+	}
 	$('body').css({'background':'rgba(0,0,0,.45)'});
 	$('.wrapper').hide();
 	$('.email').fadeIn(200);
+});
+
+$('.adminButton').on('click',function(){
+	if($('.addItem:visible')){
+		$('.addItem').hide();
+	}
+	if($('.email:visible')){
+		$('.email').hide();
+	}
+	$('body').css({'background':'rgba(0,0,0,.45)'});
+	$('.wrapper').hide();
+	$('.adduser').fadeIn(200);
 });
 
 $('.close').on('click',function(){
@@ -207,6 +271,11 @@ $('.close').on('click',function(){
 });
 
 $('#list').tablesorter();
+
+//new user form controls
+
+
+
 
 });
 </script>

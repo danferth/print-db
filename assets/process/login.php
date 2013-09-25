@@ -12,6 +12,7 @@ if(isset($_POST['submit'])){
 		$q->execute();
 	
 		$result = $q->fetch(PDO::FETCH_ASSOC);
+		$q->closeCursor();
 		$testPass = $suppliedPass.$result['salt'];
 		$hashedTestPass = hash('sha512',$testPass);
 	

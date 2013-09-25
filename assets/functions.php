@@ -26,16 +26,14 @@ function boxChecked($query,$check,$name){
 
 //session timeout put into form action pages so page does not parse if timeout
 function sessionTimeout(){
-$timeout = 3600;
-if(isset($_SESSION['timeout'])){
-	$sessionLife = time() - $_SESSION['timeout'];
-	if($sessionLife > $timeout){
-		session_destroy();
-		header("Location: index.php?message=timeout");
+	$timeout = 3600;
+	if(isset($_SESSION['timeout'])){
+		$sessionLife = time() - $_SESSION['timeout'];
+		if($sessionLife > $timeout){
+			session_destroy();
+			header("Location: index.php?message=timeout");
+		}
 	}
-	$time = "timeout = 180 | sessionLife = ".$sessionLife." | time = ".$_SESSION['timeout'];
-}
-
 }
 
 //redirect with query
@@ -60,62 +58,5 @@ $next_page = $page.".php";
 header('HTTP/1.1 303 See Other');
 header('Location: http://' . $server_dir . $next_page);
 }
-//passwords initial creation**********************
 
-function createFirstUser($firstUser, $initialPass, $db_conn){
-//first user only, is admin
-$admin = 1; 
-//create salt with rand()
-$createdSalt = rand(1000,1000000);
-//get password from input
-$suppliedPass = $initialPass;
-//create var with password + salt
-$password = $suppliedPass.$createdSalt;
-// hash it
-$hashedPass = hash('sha512',$password);
-//insert into db
-$q = $db_conn->prepare("INSERT INTO users (`ID`, `user`, `pass`, `salt`, `admin`) VALUES (NULL,:user, :pass, :salt, :admin)");
-	$q->bindParam(":user", $firstUser);
-	$q->bindParam(":pass", $hashedPass);
-	$q->bindParam(":salt", $createdSalt);
-	$q->bindParam(":admin", $admin);
-	$q->execute();
-
-if(!$q){
-		die(print_r($db_conn->errorInfo(), TRUE));
-	}
-	if($q){
-		echo "<p><strong>first user entered...</strong></p>";
-		$q->closeCursor();
-	}
-}
-//password compare on subsequent logins******************
-// gather variables
-if(isset($_POST['submit'])){
-
-	$suppliedUser = $_POST['user'];
-	$suppliedPass = $_POST['pass'];
-	$sanitizedPass = $db->quote($suppliedPass);
-
-
-
-//query db for username
-$q = $db->prepare("SELECT * FROM users WHERE user=:user");
-	$q->bindParam(":user",$suppliedUser);
-	$q->execute();
-
-	$result = $q->fetch(PDO::FETCH_ASSOC);
-//take suplied password and add salt from user query
-$testPass = $sanitizedPass.$result['salt'];
-//hash it and put into var
-$hasedTestPass = hash('sha512',$testPass);
-//compare to password in db
-if($hashedTestPass === $result['pass']){
-		queryRedirect('list',$result['ID']);
-	}else{
-		
-		queryRedirect('index','error');
-	}
-
-}
  ?>
