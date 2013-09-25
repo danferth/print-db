@@ -133,7 +133,7 @@ dbClose();
 <!-- form to add records*************************************************** -->
 <form class="addItem" action='assets/process/add.php' method='Post'>
 	<button class="close">x</button>
-	<h2>Add 2 the List</h2>
+	<h2>Add to the List</h2>
 	<div class="left">
 		<p><textarea name="message" cols="30" rows="4"></textarea></p>
 		<p class="input"><input type='text' name='part' required><label for='part'>part</label>				</p>
@@ -155,7 +155,7 @@ dbClose();
 	<h2>email yo peeps</h2>
 	<div class="left">
 		<p class="input"><input type="email" name="from" required><label for="from">From email:</label></p>
-		<p class="formP">TO:</p>
+		<h2>To:</h2>
 		<p class="check"><input type="checkbox" name="marketing"><label for="marketing">Marketing <em>(Dan)</em></label></p>
 		<p class="check"><input type="checkbox" name="admin"><label for="marketing">Administrator <em>(Angelica)</em></label></p>
 		<p class="check"><input type="checkbox" name="warehouse"><label for="marketing">Warehouse <em>(Maritza)</em></label></p>
@@ -169,7 +169,7 @@ dbClose();
 <!-- footer******************************************************** -->
 <footer>
 	<p>Actions:</p>
-	<button class="addButton">Add 2 the List</button>
+	<button class="addButton">Add to the List</button>
 	<button class="emailButton">email some peeps</button>
 
 </footer>
