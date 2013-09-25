@@ -59,6 +59,45 @@ $next_page = $page.".php";
 /* The header() function sends a HTTP message The 303 code asks the server to use GET when redirecting to another page */
 header('HTTP/1.1 303 See Other');
 header('Location: http://' . $server_dir . $next_page);
-
 }
+//passwords initial creation**********************
+
+function createFirstUser($firstUser, $initialPass, $db_conn){
+//first user only, is admin
+$admin = 1; 
+//create salt with rand()
+$createdSalt = rand(1000,1000000);
+//get password from input
+$suppliedPass = $initialPass;
+//create var with password + salt
+$password = $suppliedPass.$createdSalt;
+// hash it
+$hashedPass = hash('sha512',$password);
+//insert into db
+$q = $db_conn->prepare("INSERT INTO users (`ID`, `user`, `pass`, `salt`, `admin`) VALUES (NULL,:user, :pass, :salt, :admin)");
+	$q->bindParam(":user", $firstUser);
+	$q->bindParam(":pass", $hashedPass);
+	$q->bindParam(":salt", $createdSalt);
+	$q->bindParam(":admin", $admin);
+	$q->execute();
+
+if(!$q){
+		die(print_r($db_conn->errorInfo(), TRUE));
+	}
+	if($q){
+		echo "<p><strong>first user entered...</strong></p>";
+		$q->closeCursor();
+	}
+}
+//password compare on subsequent logins******************
+
+
+//query db for username
+
+//take suplied password and add salt from user query
+
+//hash it and put into var
+
+//compare to password in db
+
  ?>

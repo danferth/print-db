@@ -1,19 +1,17 @@
 <?php 
+include '../connection.php';
+include '../functions.php';
 //script variables***************************************************************
-$server = "localhost";
-$dbname = "test_db";
-$user = "root";
-$pass = "";
 
 $firstUser = "dan";
 $firstPass = "password";
+$admin = 1;
 
 //connect to MySQL & Database*******************************************************
 echo "<p>connecting to database...</p>";
 
 try{
-	$dsn = "mysql:host=".$server.";dbname=".$dbname;
-	$db = new PDO($dsn, $user, $pass);
+	$db = new PDO($dsn,$db_user,$db_pass);
 	if($db){
 		echo "<p><strong>connection established...</strong></p>";
 	}
@@ -67,7 +65,9 @@ $q = "CREATE TABLE IF NOT EXISTS users(
 	`ID` INT NOT NULL AUTO_INCREMENT,
 	PRIMARY KEY(ID),
 	`user` VARCHAR(20),
-	`pass` VARCHAR(20)
+	`pass` VARCHAR(600),
+	`salt` VARCHAR(600),
+	`admin` BOOLEAN
 	)";
 $result = $db->query($q);
 if(!$result) {
@@ -100,25 +100,14 @@ if($result) {
 	
 	
 	
-	$q = $db->prepare("INSERT INTO users (`ID`, `user`, `pass`) VALUES (NULL,:user, :pass)");
-	$q->bindParam(":user", $firstUser);
-	$q->bindParam(":pass", $firstPass);
-	$q->execute();
-	
-	if(!$q){
-		die(print_r($db->errorInfo(), TRUE));
-	}
-	if($q){
-		echo "<p><strong>first user entered...</strong></p>";
-		$q->closeCursor();
-	}
+createFirstUser($firstUser, $firstPass, $db);
 
 }
 //output user and close connection********************************************************
 $q = "SELECT * FROM users";
 $result = $db->query($q);
 while($arr = $result->fetch(PDO::FETCH_ASSOC)){
-	echo $arr['ID']." | <strong>username</strong> = " . $arr['user'] . " | <strong>password</strong> = " . $arr['pass'] . "<br>";
+	echo $arr['ID']." | <strong>username</strong> = " . $arr['user'] . " created as ADMIN ready to start<br>";
 }
 
 $result->closeCursor();
