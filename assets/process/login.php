@@ -4,23 +4,26 @@ require_once "../functions.php";
 
 if(isset($_POST['submit'])){
 
-	$user = $_POST['user'];
-	$pass = $_POST['pass'];
+	$suppliedUser = $_POST['user'];
+	$suppliedPass = $_POST['pass'];
 
-	$q = $db->prepare("SELECT * FROM users WHERE user=:user AND pass=:pass");
-	$q->bindParam(":user",$user);
-	$q->bindParam(":pass",$pass);
+//query db for username
+$q = $db->prepare("SELECT * FROM users WHERE user=:user");
+	$q->bindParam(":user",$suppliedUser);
 	$q->execute();
 
 	$result = $q->fetch(PDO::FETCH_ASSOC);
-
-	if($q->rowCount() == 1){
+//take suplied password and add salt from user query
+$testPass = $suppliedPass.$result['salt'];
+//hash it and put into var
+$hashedTestPass = hash('sha512',$testPass);
+//compare to password in db
+if($hashedTestPass === $result['pass']){
 		queryRedirect('list',$result['ID']);
 	}else{
 		
 		queryRedirect('index','error');
 	}
-
 
 }
  ?>
