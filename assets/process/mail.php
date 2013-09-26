@@ -16,16 +16,16 @@ if(!isset($_POST['send'])){
 	$to = array();
 	
 	if(isset($_POST['marketing'])){
-		$to[] = "marketing@htslabs.com";
+		$to[] = "marketing@example.com";
 	}
 	if(isset($_POST['admin'])){
-		$to[] = "assoc@htslabs.com";
+		$to[] = "assoc@example.com";
 	}
 	if(isset($_POST['warehouse'])){
-		$to[] = "maritza@htslabs.com";
+		$to[] = "warehouse@example.com";
 	}
 	if(isset($_POST['purchasing'])){
-		$to[] = "purchase@hplc1.com";
+		$to[] = "purchasing@example.com";
 	}
 	
 	$mail->senderName = "Fliers ALERT!";
