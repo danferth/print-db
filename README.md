@@ -1,6 +1,6 @@
 Simple App to track print files in  your organization
 ===============================================
-
+##This is the #localhost# branch set up for working with XAMPP##
 Needed a way to track the revision process and order request for print files at work. so created this to put on back end of site and hide via `robots.txt`.  Pretty simple and straight forward to install and use.
 
 Created in `php` and uses `PDO` for db connection and queries. little `jQuery` as well (links to `google CDN`
@@ -20,4 +20,7 @@ Feel free to edit and such as you please.
 - ~~redo the login backend for better security, as of now not hashing the passwords (big no no)~~
 - ~~create admin column in db~~
 - ~~create admin page for adding new users~~
+- make `head` an `include` and not static for easy maintenance of multiple pages
+- add favicon support
+- make responsive
 - refine `install.php` with beter error reporting
