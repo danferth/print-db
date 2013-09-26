@@ -25,21 +25,11 @@ if(!isset($_SESSION['user'])){
 	$welcomeMessage = "<p class='welcome'>Logged in as: ". $_SESSION['user']."</p>";
 }
 dbClose();
-
+//page variables and head
+$pageTitle = "the List";
+$pagecss = "list.css";
+include_once '_head.php';
 ?>
-
-<!doctype html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>fliers</title>
-	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
-	<link rel="stylesheet" href="assets/css/list.css">
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-	<script src="assets/coffee/functions.js"></script>
-	<script src="assets/coffee/prefixfree.min.js"></script>
-	<script src="assets/coffee/tablesorter.js"></script>
-</head>
 <body>
 <!-- header with logout****************************************************** -->
 <header>	
@@ -173,7 +163,7 @@ dbClose();
 	<button class="emailButton">email some peeps</button>
 
 </footer>
-
+<?php include_once '_tail.php'; ?>
 <script>
 
 $(document).ready(function(){
@@ -283,6 +273,5 @@ $('#list').tablesorter();
 
 });
 </script>
-
 </body>
 </html>

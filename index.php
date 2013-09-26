@@ -6,32 +6,11 @@ if(isset($_SESSION['user'])){
 }
 
 include "assets/connection.php";
+//page variables and head
+$pageTitle = "Log|In";
+$pagecss = "login.css";
+include_once '_head.php';
  ?>
-<!doctype html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Log|In</title>
-	<!-- Opera speed dial icon -->
-    <link rel="icon" type="image/png" href="assets/icons/195x195image.png">
-	<!-- display largest first as iOS < 4.2 does not support size attr -->
-	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/icons/apple-touch-icon-114x114-precomposed.png">
-	<!-- For iPad: apple doesn't need this but andoid OS (2.1+) does -->
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/icons/apple-touch-icon-72x72-precomposed.png">
-    <link rel="apple-touch-icon" href="assets/icons/touch-icon-iphone.png" />
-	<!-- browser should find ICO file by default without <link> -->
-	<link rel="icon" type="image/png" href="assets/icons/favicon.png" />
-	<!--[if IE]><link rel="shortcut icon" href="pathto/favicon.ico"><![endif]-->
-	<!-- or, set /favicon.ico for IE10 win -->
-	<meta name="msapplication-TileColor" content="#2E8D61">
-	<meta name="msapplication-TileImage" content="assets/icons/tileicon.png">
-	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
-	<link rel="stylesheet" type="text/css" href="assets/css/login.css">
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-	<script src="assets/coffee/functions.js"></script>
-	<script src="assets/coffee/prefixfree.min.js"></script>
-	
-</head>
 <body>
 <div class="wrapper login">
 
@@ -56,6 +35,7 @@ if(isset($_GET['message'])){
 
  ?>	
 </div><!-- end wrapper -->
+<?php include_once '_tail.php'; ?>
 <script>
 	$(document).ready(function(){
 		$('.wrapper').hide().delay(500).fadeIn(1000);

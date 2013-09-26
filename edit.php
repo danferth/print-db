@@ -12,24 +12,11 @@ if(!isset($_POST['submit'])){
 	$q = "SELECT * FROM fliers WHERE ID= $ID";
 	$result = $db->query($q);
 	$db_result = $result->fetch(PDO::FETCH_ASSOC);
-
-
-
-
-
-
+//page variables and head
+$pageTitle = "Edit entry";
+$pagecss = "edit.css";
+include_once '_head.php';
  ?>
- <!doctype html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>fliers</title>
-	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
-	<link rel="stylesheet" type="text/css" href="assets/css/edit.css">
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-	<script src="assets/coffee/functions.js"></script>
-	<script src="assets/coffee/prefixfree.min.js"></script>
-</head>
 <body>
  <form class="editList" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
  	<a href="list.php" class="close">x</a>
@@ -103,6 +90,7 @@ if(!isset($_POST['submit'])){
 	}
 
 ?>
+<?php include_once '_tail.php'; ?>
 <script>
 	$(document).ready(function(){
 		$('form.editList').on('mouseover',function(){
