@@ -46,7 +46,6 @@ if(!isset($_POST['send'])){
 	redirect('index');
 	}else{
 
-
 	require_once("mimemail.php");
 	$mail = new MIMEMAIL("HTML");
 	$message = $_POST['emailMessage'];
