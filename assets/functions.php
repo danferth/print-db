@@ -36,7 +36,7 @@ function queryRedirect($page,$message){
 	// Build the query string to be attached to the redirected URL
 	$query_string = '?message=' . $message;
 	// Redirection domain and phisical dir
-	$server_dir = $_SERVER['HTTP_HOST'] . rtrim(dirname('//asset/'), '/\\') . '/';
+	$server_dir = $_SERVER['HTTP_HOST'] . rtrim(dirname('/www/print/asset/'), '/\\') . '/';
 	$next_page = $page.".php";
 	/* The header() function sends a HTTP message The 303 code asks the server to use GET when redirecting to another page */
 	header('HTTP/1.1 303 See Other');
@@ -45,7 +45,7 @@ function queryRedirect($page,$message){
 //redirect without query
 function redirect($page){
 	// Redirection domain and phisical dir
-	$server_dir = $_SERVER['HTTP_HOST'] . rtrim(dirname('//asset/'), '/\\') . '/';
+	$server_dir = $_SERVER['HTTP_HOST'] . rtrim(dirname('/www/print/asset/'), '/\\') . '/';
 	$next_page = $page.".php";
 	/* The header() function sends a HTTP message The 303 code asks the server to use GET when redirecting to another page */
 	header('HTTP/1.1 303 See Other');
