@@ -2,44 +2,42 @@
 session_start();
 require_once "../functions.php";
 sessionTimeout();
-require_once("mimemail.php");
-$mail = new MIMEMAIL("HTML");
+
+if(!isset($_POST['send'])){
+	session_destroy();
+	redirect('index');
+	}else{
 
 
-$message = $_POST['emailMessage'];
-$from = $_POST['from'];
-$to = array();
-
-if(isset($_POST['marketing'])){
-	$to[] = "marketing@htslabs.com";
-}
-if(isset($_POST['admin'])){
-	$to[] = "assoc@htslabs.com";
-}
-if(isset($_POST['warehouse'])){
-	$to[] = "maritza@htslabs.com";
-}
-if(isset($_POST['purchasing'])){
-	$to[] = "purchase@hplc1.com";
-}
-
-
-
-
-$mail->senderName = "Fliers ALERT!";
-$mail->senderMail = $from;
-$mail->subject = "ALERT! | Fliers page needs your attention";
-
-$mail->body = $message;
-
-$mail->create();
-
-
-
-$recipients = $to;
-  if($mail->send($recipients)){
-  	redirect('list');
-}else{
-   echo $mail->error;
+	require_once("mimemail.php");
+	$mail = new MIMEMAIL("HTML");
+	$message = $_POST['emailMessage'];
+	$from = $_POST['from'];
+	$to = array();
+	
+	if(isset($_POST['marketing'])){
+		$to[] = "marketing@htslabs.com";
+	}
+	if(isset($_POST['admin'])){
+		$to[] = "assoc@htslabs.com";
+	}
+	if(isset($_POST['warehouse'])){
+		$to[] = "maritza@htslabs.com";
+	}
+	if(isset($_POST['purchasing'])){
+		$to[] = "purchase@hplc1.com";
+	}
+	
+	$mail->senderName = "Fliers ALERT!";
+	$mail->senderMail = $from;
+	$mail->subject = "ALERT! | Fliers page needs your attention";
+	$mail->body = $message;
+	$mail->create();
+	$recipients = $to;
+	  if($mail->send($recipients)){
+	  	redirect('list');
+	}else{
+	   echo $mail->error;
+	}
 }
  ?>

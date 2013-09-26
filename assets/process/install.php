@@ -1,10 +1,10 @@
 <?php 
 include '../connection.php';
 //script variables***************************************************************
-$db_user = 'root';
-$db_pass = '';
+$db_user = 'syringel_dan';
+$db_pass = 'QMVLynWAmxP3';
 $db_server = 'localhost';
-$db_name = 'test_db';
+$db_name = 'syringel_print';
 $dsn = "mysql:host=".$db_server.";dbname=".$db_name;
 
 $firstUser = "dan";
