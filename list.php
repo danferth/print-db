@@ -99,17 +99,17 @@ while($db_field = $result->fetch(PDO::FETCH_ASSOC)){
 	}
 
 	echo '<tr>
-	<td>'.$db_field['part_num'].'</td>
-	<td>'.$db_field['in_house'].'</td>
-	<td class="bullet old">'.$db_field['use_old'].'</td>
-	<td class="desc">'.$db_field['desc'].'</td>
-	<td class="bullet revision">'.$db_field['revision'].'</td>
-	<td class="bullet order">'.$db_field['order'].'</td>
-	<td class="bullet ordered">'.$db_field['ordered'].'</td>
-	<td class="bullet alert">'.$db_field['alert'].'</td>
-	<td class="bullet message">'.$message.'</td>
-	<td><a href="edit.php?ID='.$db_field['ID'].'">edit</a></td>
-	<td><a class="delete" href="assets/process/delete.php?ID='.$db_field['ID'].'">delete</a></td>
+	<td data-title="Part#">'.$db_field['part_num'].'</td>
+	<td data-title="In-House">'.$db_field['in_house'].'</td>
+	<td data-title="Use Old" class="bullet old">'.$db_field['use_old'].'</td>
+	<td data-title="Desc" class="desc">'.$db_field['desc'].'</td>
+	<td data-title="Revision" class="bullet revision">'.$db_field['revision'].'</td>
+	<td data-title="Order" class="bullet order">'.$db_field['order'].'</td>
+	<td data-title="Ordered" class="bullet ordered">'.$db_field['ordered'].'</td>
+	<td data-title="Alert" class="bullet alert">'.$db_field['alert'].'</td>
+	<td data-title="Message" class="bullet message">'.$message.'</td>
+	<td data-title="Edit"><a href="edit.php?ID='.$db_field['ID'].'">edit</a></td>
+	<td data-title="Delete"><a class="delete" href="assets/process/delete.php?ID='.$db_field['ID'].'">delete</a></td>
 	</tr>';
 }
 ?>
