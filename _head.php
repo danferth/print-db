@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="initial-scale=1">
 	<title><?php echo $pageTitle; ?></title>
 	<!-- favicons***************************************** -->
 	<!-- Opera speed dial icon -->

@@ -1,7 +1,17 @@
 @import "variables";
 html{
-	background: url('../images/listBG.jpg') no-repeat center center fixed;
+	background: url('../images/listBG-big.jpg') no-repeat center center fixed;
 	background-size:cover;
+	@media screen and (max-width:1024px){
+		background: url('../images/listBG-medium.jpg') no-repeat center center fixed;
+		background-size: cover;
+		background-color:black;
+	}
+	@media screen and (max-width:500px){
+		background: url('../images/listBG-mobile.jpg') no-repeat center center fixed;
+		background-size: cover;
+		background-color:black;
+	}
 }
 
 .wrapper{

@@ -1,15 +1,38 @@
 /* line 2, login.scss */
 html {
-  background: url(../images/loginBG.jpg) no-repeat center center fixed;
+  background: url(../images/loginBG-big.jpg) no-repeat center center fixed;
   background-size: cover;
+  background-color: black;
+}
+@media screen and (max-width: 1024px) {
+  /* line 2, login.scss */
+  html {
+    background: url("../images/loginBG-medium.jpg") no-repeat center center fixed;
+    background-size: cover;
+    background-color: black;
+  }
+}
+@media screen and (max-width: 650px) {
+  /* line 2, login.scss */
+  html {
+    background: url("../images/loginBG-mobile.jpg") no-repeat center center fixed;
+    background-size: cover;
+    background-color: black;
+  }
 }
 
-/* line 6, login.scss */
+/* line 17, login.scss */
 body {
   padding: 100px 0 0 0;
 }
+@media screen and (max-width: 650px) {
+  /* line 17, login.scss */
+  body {
+    padding-top: 2px;
+  }
+}
 
-/* line 10, login.scss */
+/* line 24, login.scss */
 .login {
   background: rgba(255, 255, 255, 0.3);
   width: 400px;
@@ -17,19 +40,34 @@ body {
   padding: 20px 50px;
   margin: 0 auto;
 }
-/* line 17, login.scss */
+@media screen and (max-width: 650px) {
+  /* line 24, login.scss */
+  .login {
+    width: 100%;
+    height: 90%;
+    padding: 3% 3%;
+    text-align: center;
+  }
+}
+/* line 36, login.scss */
 .login p.input {
   margin: 0 0 7px 0;
 }
-/* line 19, login.scss */
+@media screen and (max-width: 650px) {
+  /* line 36, login.scss */
+  .login p.input {
+    margin-bottom: 25px;
+  }
+}
+/* line 41, login.scss */
 .login p.input:first-of-type {
   margin-top: 10px;
 }
-/* line 23, login.scss */
+/* line 45, login.scss */
 .login form {
   background: none;
 }
-/* line 26, login.scss */
+/* line 48, login.scss */
 .login input {
   background: #f2f2f2;
   border: none;
@@ -40,19 +78,34 @@ body {
   color: #999999;
   text-shadow: 0 1px 0 white;
 }
-/* line 35, login.scss */
+@media screen and (max-width: 650px) {
+  /* line 48, login.scss */
+  .login input {
+    height: 50px;
+    font-size: 20px;
+    line-height: 50px;
+  }
+}
+/* line 62, login.scss */
 .login input:focus {
   outline: none;
   box-shadow: inset 0 0 3px 1px #33a696;
   border: 1px solid #33a696;
 }
-/* line 41, login.scss */
+/* line 68, login.scss */
 .login label {
   color: #8c8c8c;
   font: 400 16px 'Open Sans',sans-serif;
   text-shadow: 0 1px 0 white;
 }
-/* line 46, login.scss */
+@media screen and (max-width: 650px) {
+  /* line 68, login.scss */
+  .login label {
+    font-size: 20px;
+    line-height: 50px;
+  }
+}
+/* line 77, login.scss */
 .login input[type="submit"] {
   height: 40px;
   background: #3a4a3d;
@@ -61,13 +114,25 @@ body {
   text-shadow: 0 1px 0 black;
   transition: all 250ms;
 }
-/* line 53, login.scss */
+@media screen and (max-width: 650px) {
+  /* line 77, login.scss */
+  .login input[type="submit"] {
+    height: 50px;
+  }
+}
+/* line 87, login.scss */
 .login input[type="submit"]:hover {
   background: #dfa80d;
   color: #fbebbd;
   text-shadow: 0 1px 0 black;
 }
-/* line 59, login.scss */
+/* line 92, login.scss */
+.login input[type="submit"]:active {
+  background: #c7960c;
+  color: #fbebbd;
+  text-shadow: 0 1px 0 black;
+}
+/* line 98, login.scss */
 .login h1 {
   margin: 0;
   font: normal 35px 'Oleo Script Swash Caps',sans-serif;
