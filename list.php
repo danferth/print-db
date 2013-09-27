@@ -71,6 +71,7 @@ if($_SESSION['admin'] == 1){
 <!-- The List******************************************************************* -->
 <div class="wrapper">
 <h1>The List</h1>
+<div class="tableWrap">
 	<table class="theList" id="list">
 		<thead>
 			<tr>
@@ -114,6 +115,7 @@ while($db_field = $result->fetch(PDO::FETCH_ASSOC)){
 ?>
 	</tbody>
 	</table>
+	</div>
 </div><!-- end wrapper -->
 <?php
 //close connection to mySQL
@@ -265,6 +267,10 @@ $('.close').on('click',function(){
 });
 
 $('#list').tablesorter();
+
+//sets scroll on long tables
+var tableWidth = $('.tableWrap').children('table').width();
+$('.tableWrap').css({'width':tableWidth});
 
 //new user form controls
 

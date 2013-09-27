@@ -76,14 +76,28 @@ h1 {
   text-shadow: 0 1px 0 #242d25;
   letter-spacing: 2px;
 }
+@media screen and (max-width: 650px) {
+  /* line 56, list.scss */
+  h1 {
+    margin-top: 20px;
+  }
+}
 
-/* line 65, list.scss */
+/* line 67, list.scss */
+.tableWrap {
+  margin: 0 auto;
+  overflow: auto;
+  max-height: 500px;
+  overflow-x: hidden;
+}
+
+/* line 73, list.scss */
 table.theList {
   border-collapse: collapse;
   margin: 0 auto;
   background: rgba(255, 255, 255, 0.75);
 }
-/* line 70, list.scss */
+/* line 78, list.scss */
 table.theList thead th {
   background: #cccccc;
   color: white;
@@ -93,63 +107,63 @@ table.theList thead th {
   text-shadow: 0 1px 0 white;
   border-right: 1px solid #b3b3b3;
 }
-/* line 78, list.scss */
+/* line 86, list.scss */
 table.theList thead th:last-of-type {
   border-right: none;
 }
-/* line 82, list.scss */
+/* line 90, list.scss */
 table.theList tr {
   border-bottom: 1px solid #cccccc;
   cursor: pointer;
 }
-/* line 85, list.scss */
+/* line 93, list.scss */
 table.theList tr:hover {
   background: #e2f6f3;
 }
-/* line 89, list.scss */
+/* line 97, list.scss */
 table.theList td {
   text-align: center;
   padding: 5px 10px;
   border-right: 1px solid #cccccc;
 }
-/* line 93, list.scss */
+/* line 101, list.scss */
 table.theList td:last-of-type {
   border-right: none;
 }
-/* line 97, list.scss */
+/* line 105, list.scss */
 table.theList td.desc {
   width: 250px;
   text-align: left;
 }
-/* line 102, list.scss */
+/* line 110, list.scss */
 table.theList .bullet {
   font-family: 'print',sans-serif;
 }
-/* line 105, list.scss */
+/* line 113, list.scss */
 table.theList a {
   text-decoration: none;
   color: #3a4a3d;
   font-weight: 300;
 }
-/* line 109, list.scss */
+/* line 117, list.scss */
 table.theList a:hover {
   text-shadow: 0 0 2px #277f73;
 }
-/* line 113, list.scss */
+/* line 121, list.scss */
 table.theList .alerted {
   background: #f7d575;
 }
-/* line 116, list.scss */
+/* line 124, list.scss */
 table.theList .message {
   color: #c22d02;
 }
 
-/* line 120, list.scss */
+/* line 128, list.scss */
 tr:nth-child(odd) {
   background: rgba(255, 255, 255, 0.6);
 }
 
-/* line 127, list.scss */
+/* line 135, list.scss */
 footer {
   position: fixed;
   bottom: 0;
@@ -160,7 +174,7 @@ footer {
   border-radius: 0 10px 0 0;
   background: #a92702;
 }
-/* line 136, list.scss */
+/* line 144, list.scss */
 footer p {
   display: inline-block;
   color: #f7d575;
@@ -168,7 +182,7 @@ footer p {
   margin: 0;
   padding: 0;
 }
-/* line 143, list.scss */
+/* line 151, list.scss */
 footer button {
   border: none;
   background: #902102;
@@ -179,31 +193,39 @@ footer button {
   transition: all 200ms;
   border-radius: 2px;
 }
-/* line 152, list.scss */
+@media screen and (max-width: 650px) {
+  /* line 151, list.scss */
+  footer button {
+    display: block;
+    width: 90%;
+    margin: 2px auto;
+  }
+}
+/* line 165, list.scss */
 footer button:hover {
   background: #761b02;
   box-shadow: inset 0 0 10px #441001;
 }
-/* line 156, list.scss */
+/* line 169, list.scss */
 footer button:active {
   background: #441001;
   box-shadow: inset 0 0 15px black;
 }
 @media all and (max-width: 1175px) {
-  /* line 127, list.scss */
+  /* line 135, list.scss */
   footer {
     width: 50%;
   }
 }
 @media all and (max-width: 835px) {
-  /* line 127, list.scss */
+  /* line 135, list.scss */
   footer {
     width: 100%;
     border-radius: 0;
   }
 }
 
-/* line 170, list.scss */
+/* line 182, list.scss */
 .adminButton {
   position: fixed;
   top: 0;
@@ -219,11 +241,17 @@ footer button:active {
   opacity: .5;
   transition: all 200ms;
 }
-/* line 184, list.scss */
+@media screen and (max-width: 650px) {
+  /* line 182, list.scss */
+  .adminButton {
+    right: 2px;
+  }
+}
+/* line 199, list.scss */
 .adminButton:hover {
   opacity: 1;
 }
-/* line 187, list.scss */
+/* line 202, list.scss */
 .adminButton:active {
   background: linear-gradient(to top, #902102 0%, #902102 20%, #441001 100%);
   color: #fbebbd;
