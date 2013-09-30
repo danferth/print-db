@@ -76,7 +76,7 @@ if($_SESSION['admin'] == 1){
 		<thead>
 			<tr>
 				<th>Part#</th>
-				<th>In-house</th>
+				<th>Cur. REV</th>
 				<th>Can Use Old</th>
 				<th>Description</th>
 				<th>Revision</th>
@@ -129,7 +129,7 @@ dbClose();
 	<div class="left">
 		<p><textarea name="message" cols="30" rows="4"></textarea></p>
 		<p class="input"><input type='text' name='part' required><label for='part'>part</label>				</p>
-		<p class="input"><input type='text' name='inHouse'><label for='isUseOld'>rev in house</label>	</p>
+		<p class="input"><input type='text' name='inHouse'><label for='isUseOld'>Current Revision</label>	</p>
 		<p class="input"><input type='text' name='description' required><label for='description'>description</label>	</p>
 	</div>
 	<div class="right">

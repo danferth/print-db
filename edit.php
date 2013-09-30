@@ -24,7 +24,7 @@ include_once '_head.php';
 		<p class="formP"><strong>EDITING: </strong><?php echo $db_result['part_num']." | <strong>".$db_result['desc'] ?></strong></p>
 	<div class="left">
 	 	<p class="input"><input type='text' name='part' value="<?php echo $db_result['part_num']; ?>"><label for='part'>Part Number</label></p>
-		<p class="input"><input type='text' name='inHouse' value="<?php echo $db_result['in_house']; ?>"><label for='inHouse'>In-House</label></p>
+		<p class="input"><input type='text' name='inHouse' value="<?php echo $db_result['in_house']; ?>"><label for='inHouse'>Current Rev</label></p>
 		<p class="input"><input type='text' name='description' value="<?php echo $db_result['desc']; ?>"><label for='description'>Description</label></p>
 	</div>
 	<div class="right">
