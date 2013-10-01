@@ -29,7 +29,114 @@ dbClose();
 $pageTitle = "the List";
 $pagecss = "list.css";
 include_once '_head.php';
+include_once '_tail.php';
 ?>
+<script>
+
+$(document).ready(function(){
+
+$.labelSwitch();
+//warning on delete
+	$('a.delete').on('click',function(){
+
+		var id = $(this).closest('tr').find('td.desc').html();
+		if(confirm("Are you sure you want to delete " + id + "?")){
+		}else{
+			return false;
+		}
+
+	});
+//replace boolean with Icons
+//old
+$('.old').icon('U');
+//revision
+$('.revision').icon("R");
+//order
+$('.order').icon("o");
+//ordered
+$('.ordered').icon("O");
+//message
+$('.message').icon("A");
+
+//if alert checked then add class alerted to tr
+$('td.alert').hide();
+$('.alert').each(function(){
+  if($(this).text() != 0){
+  $(this).closest('tr').addClass('alerted');
+  }
+});
+//form actions
+$('.addItem, .email, .adduser').hide();
+//check for message ad display adduser if true
+var urlString = String(document.location);
+var test1 = "?message=badpass";
+var test2 = "?message=userAlreadyExists";
+
+if(urlString.indexOf(test1) != -1){
+	$('body').css({'background':'rgba(0,0,0,.45)'});
+	$('.wrapper').hide();
+	$('.adduser').fadeIn(200);	
+}
+if(urlString.indexOf(test2) != -1){
+	$('body').css({'background':'rgba(0,0,0,.45)'});
+	$('.wrapper').hide();
+	$('.adduser').fadeIn(200);	
+}
+$('.addButton').on('click',function(){
+	if($('.email:visible')){
+		$('.email').hide();
+	}
+	if($('.adduser:visible')){
+		$('.adduser').hide();
+	}
+	$('body').css({'background':'rgba(0,0,0,.45)'});
+	$('.wrapper').hide();
+	$('.addItem').fadeIn(200);
+});
+$('.emailButton').on('click',function(){
+	if($('.addItem:visible')){
+		$('.addItem').hide();
+	}
+	if($('.adduser:visible')){
+		$('.adduser').hide();
+	}
+	$('body').css({'background':'rgba(0,0,0,.45)'});
+	$('.wrapper').hide();
+	$('.email').fadeIn(200);
+});
+$('.adminButton').on('click',function(){
+	if($('.addItem:visible')){
+		$('.addItem').hide();
+	}
+	if($('.email:visible')){
+		$('.email').hide();
+	}
+	$('body').css({'background':'rgba(0,0,0,.45)'});
+	$('.wrapper').hide();
+	$('.adduser').fadeIn(200);
+});
+
+$('.close').on('click',function(){
+	$(this).parent('form').fadeOut(100);
+	$('body').css({'background':'rgba(0,0,0,.0)'});
+	$('.wrapper').delay(300).fadeIn(400);
+});
+$('#list').tablesorter();
+//sets scroll on long tables
+var windowWidth = $(window).width();
+if(windowWidth <= 790){
+	$('.tableWrap, .theList td').css({'width':windowWidth});
+
+}
+
+
+//new user form controls
+
+
+
+
+});
+</script>
 <body>
 <!-- header with logout****************************************************** -->
 <header>	
@@ -99,7 +206,7 @@ while($db_field = $result->fetch(PDO::FETCH_ASSOC)){
 	}
 
 	echo '<tr>
-	<td data-title="Part#">'.$db_field['part_num'].'</td>
+	<td data-title="Part#" class="part">'.$db_field['part_num'].'</td>
 	<td data-title="In-House">'.$db_field['in_house'].'</td>
 	<td data-title="Use Old" class="bullet old">'.$db_field['use_old'].'</td>
 	<td data-title="Desc" class="desc">'.$db_field['desc'].'</td>
@@ -108,8 +215,8 @@ while($db_field = $result->fetch(PDO::FETCH_ASSOC)){
 	<td data-title="Ordered" class="bullet ordered">'.$db_field['ordered'].'</td>
 	<td data-title="Alert" class="bullet alert">'.$db_field['alert'].'</td>
 	<td data-title="Message" class="bullet message">'.$message.'</td>
-	<td data-title="Edit"><a href="edit.php?ID='.$db_field['ID'].'">edit</a></td>
-	<td data-title="Delete"><a class="delete" href="assets/process/delete.php?ID='.$db_field['ID'].'">delete</a></td>
+	<td data-title="Edit" class="edit"><a href="edit.php?ID='.$db_field['ID'].'">edit</a></td>
+	<td data-title="Delete" class="delete"><a class="delete" href="assets/process/delete.php?ID='.$db_field['ID'].'">delete</a></td>
 	</tr>';
 }
 ?>
@@ -165,119 +272,6 @@ dbClose();
 	<button class="emailButton">email some peeps</button>
 
 </footer>
-<?php include_once '_tail.php'; ?>
-<script>
 
-$(document).ready(function(){
-
-$.labelSwitch();
-//warning on delete
-	$('a.delete').on('click',function(){
-
-		var id = $(this).closest('tr').find('td.desc').html();
-		if(confirm("Are you sure you want to delete " + id + "?")){
-		}else{
-			return false;
-		}
-
-	});
-//replace boolean with Icons
-//old
-$('.old').icon('U');
-//revision
-$('.revision').icon("R");
-//order
-$('.order').icon("o");
-//ordered
-$('.ordered').icon("O");
-//message
-$('.message').icon("A");
-
-//if alert checked then add class alerted to tr
-$('td.alert').hide();
-$('.alert').each(function(){
-  if($(this).text() != 0){
-  $(this).closest('tr').addClass('alerted');
-  }
-});
-
-
-
-//form actions
-$('.addItem, .email, .adduser').hide();
-
-//check for message ad display adduser if true
-var urlString = String(document.location);
-var test1 = "?message=badpass";
-var test2 = "?message=userAlreadyExists";
-
-if(urlString.indexOf(test1) != -1){
-	$('body').css({'background':'rgba(0,0,0,.45)'});
-	$('.wrapper').hide();
-	$('.adduser').fadeIn(200);	
-}
-if(urlString.indexOf(test2) != -1){
-	$('body').css({'background':'rgba(0,0,0,.45)'});
-	$('.wrapper').hide();
-	$('.adduser').fadeIn(200);	
-}
-
-
-
-$('.addButton').on('click',function(){
-	if($('.email:visible')){
-		$('.email').hide();
-	}
-	if($('.adduser:visible')){
-		$('.adduser').hide();
-	}
-	$('body').css({'background':'rgba(0,0,0,.45)'});
-	$('.wrapper').hide();
-	$('.addItem').fadeIn(200);
-});
-
-$('.emailButton').on('click',function(){
-	if($('.addItem:visible')){
-		$('.addItem').hide();
-	}
-	if($('.adduser:visible')){
-		$('.adduser').hide();
-	}
-	$('body').css({'background':'rgba(0,0,0,.45)'});
-	$('.wrapper').hide();
-	$('.email').fadeIn(200);
-});
-
-$('.adminButton').on('click',function(){
-	if($('.addItem:visible')){
-		$('.addItem').hide();
-	}
-	if($('.email:visible')){
-		$('.email').hide();
-	}
-	$('body').css({'background':'rgba(0,0,0,.45)'});
-	$('.wrapper').hide();
-	$('.adduser').fadeIn(200);
-});
-
-$('.close').on('click',function(){
-	$(this).parent('form').fadeOut(100);
-	$('body').css({'background':'rgba(0,0,0,.0)'});
-	$('.wrapper').delay(300).fadeIn(400);
-});
-
-$('#list').tablesorter();
-
-//sets scroll on long tables
-var tableWidth = $('.tableWrap').children('table').width();
-$('.tableWrap').css({'width':tableWidth});
-
-//new user form controls
-
-
-
-
-});
-</script>
 </body>
 </html>

@@ -73,15 +73,16 @@ h1{
 	@media screen and (max-width:790px){
 		overflow:visible;
 		width: 100%;
-		max-height: 95%;
+		max-height: 100%;
 	}
 }
 table.theList{
 	border-collapse:collapse;
 	margin: 0 auto;
 	background:rgba(255,255,255,.75);
+	width:100%;
 	@media screen and (max-width:790px){
-		width: 100%;
+		background:rgb(255,255,255);
 	}
 	thead{
 		@media screen and (max-width:790px){
@@ -121,10 +122,11 @@ table.theList{
 			display: block;
 			position:relative;
 			border-bottom:1px solid darken(white,20%);
-			width: 75%;
-			margin-left:25%;
 			text-align:left;
 			min-height:34px;
+			padding-left:30%;
+			overflow:hidden;
+			white-space:nowrap;
 		}
 		&:last-of-type{
 			border-right:none;
@@ -137,26 +139,48 @@ table.theList{
 			content: attr(data-title);
 			font-family: sans-serif;
 			text-align:right;
+			line-height:34px;
 			position: absolute;
-			left: -34%;
+			left: 0;
 			top: 0;
 			display:block;
-			width: 31%;
+			width: 25%;
 			min-height:34px; 
 			white-space: nowrap;
-			padding:5px;
+			padding:0 5px 0 0;
 			background: darken(white,30%);
 		}
 		}
 	}
 	td.desc{
-		width: 250px;
+		width: 40%;
 		text-align: left;
 		@media screen and (max-width:790px){
-			width: 75%%;
+			width: 100%;
+			&:after{
+				content:"";
+				display:block;
+				min-height:34px;
+				width: 10%;
+				background:linear-gradient(to left, rgba(255,255,255,1)5%, rgba(255,255,255,.0)100%);
+				position:absolute;
+				right: 0;
+				top:0;
+			}
 		}
 	}
-
+	td.delete, td.edit, td.message{
+		@media screen and (max-width:790px){
+			display:none;
+		}
+	}
+	td.part{
+		@media screen and (max-width:790px){
+			&:nth-child(odd){
+				background:rgba($primary,.2);
+			}
+		}
+	}
 	.bullet{
 		font-family:'print',sans-serif;
 	}
@@ -177,6 +201,9 @@ table.theList{
 }
 tr:nth-child(odd){
 	background: rgba(255,255,255,.6);
+	@media screen and (max-width:790px){
+		background:rgba(255,255,255,.0);	
+	}
 }
 
 
