@@ -123,6 +123,7 @@ $('.close').on('click',function(){
 });
 $('#list').tablesorter();
 //sets scroll on long tables
+
 var windowWidth = $(window).width();
 if(windowWidth <= 790){
 	$('.tableWrap, .theList td').css({'width':windowWidth});
@@ -207,7 +208,7 @@ while($db_field = $result->fetch(PDO::FETCH_ASSOC)){
 
 	echo '<tr>
 	<td data-title="Part#" class="part">'.$db_field['part_num'].'</td>
-	<td data-title="In-House">'.$db_field['in_house'].'</td>
+	<td data-title="Cur. Rev">'.$db_field['in_house'].'</td>
 	<td data-title="Use Old" class="bullet old">'.$db_field['use_old'].'</td>
 	<td data-title="Desc" class="desc">'.$db_field['desc'].'</td>
 	<td data-title="Revision" class="bullet revision">'.$db_field['revision'].'</td>
