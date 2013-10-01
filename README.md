@@ -22,5 +22,5 @@ Feel free to edit and such as you please.
 - ~~create admin page for adding new users~~
 - ~~make `head` an `include` and not static for easy maintenance of multiple pages do same with `js` and put at bottom~~
 - ~~add favicon support~~
-- make responsive
+- ~~make responsive~~
 - ~~refine `install.php` with beter error reporting~~
