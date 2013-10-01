@@ -11,34 +11,38 @@ html {
     background-color: black;
   }
 }
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 790px) {
   /* line 2, list.scss */
   html {
-    background: url("../images/listBG-mobile.jpg") no-repeat center center fixed;
-    background-size: cover;
-    background-color: black;
+    background: black;
   }
 }
 
-/* line 17, list.scss */
+/* line 15, list.scss */
 .wrapper {
   width: 95%;
   margin: 0 auto;
 }
+@media screen and (max-width: 790px) {
+  /* line 15, list.scss */
+  .wrapper {
+    width: 100%;
+  }
+}
 
-/* line 21, list.scss */
+/* line 22, list.scss */
 header {
   height: 32px;
   width: 320px;
   background: #a7e4dc;
   border-radius: 0 0 10px 0;
 }
-/* line 26, list.scss */
+/* line 27, list.scss */
 header form#logout {
   display: inline-block;
   margin: -2px 0 0 0;
 }
-/* line 29, list.scss */
+/* line 30, list.scss */
 header form#logout input[type="submit"] {
   border: none;
   height: 32px;
@@ -50,13 +54,13 @@ header form#logout input[type="submit"] {
   text-shadow: none;
   transition: all 175ms;
 }
-/* line 39, list.scss */
+/* line 40, list.scss */
 header form#logout input[type="submit"]:hover {
   background: #46c6b5;
   color: #3a4a3d;
   text-shadow: none;
 }
-/* line 46, list.scss */
+/* line 47, list.scss */
 header .welcome {
   font: 300 14px 'Open Sans', sans-serif;
   color: #3a4a3d;
@@ -67,7 +71,7 @@ header .welcome {
   display: inline-block;
 }
 
-/* line 56, list.scss */
+/* line 57, list.scss */
 h1 {
   text-align: center;
   margin: 50px 0 3px 0;
@@ -77,41 +81,42 @@ h1 {
   letter-spacing: 2px;
 }
 @media screen and (max-width: 650px) {
-  /* line 56, list.scss */
+  /* line 57, list.scss */
   h1 {
     margin-top: 20px;
   }
 }
 
-/* line 67, list.scss */
+/* line 68, list.scss */
 .tableWrap {
   margin: 0 auto;
   overflow: auto;
   max-height: 500px;
   overflow-x: hidden;
 }
-@media screen and (max-width: 700px) {
-  /* line 67, list.scss */
+@media screen and (max-width: 790px) {
+  /* line 68, list.scss */
   .tableWrap {
     overflow: visible;
+    width: 100%;
+    max-height: 95%;
   }
 }
 
-/* line 76, list.scss */
+/* line 79, list.scss */
 table.theList {
   border-collapse: collapse;
   margin: 0 auto;
   background: rgba(255, 255, 255, 0.75);
 }
-@media screen and (max-width: 700px) {
-  /* line 76, list.scss */
+@media screen and (max-width: 790px) {
+  /* line 79, list.scss */
   table.theList {
-    display: block;
     width: 100%;
   }
 }
-@media screen and (max-width: 700px) {
-  /* line 84, list.scss */
+@media screen and (max-width: 790px) {
+  /* line 86, list.scss */
   table.theList thead {
     display: block;
     position: absolute;
@@ -119,7 +124,7 @@ table.theList {
     left: -9999px;
   }
 }
-/* line 92, list.scss */
+/* line 94, list.scss */
 table.theList thead th {
   background: #cccccc;
   color: white;
@@ -129,94 +134,110 @@ table.theList thead th {
   text-shadow: 0 1px 0 white;
   border-right: 1px solid #b3b3b3;
 }
-/* line 100, list.scss */
+/* line 102, list.scss */
 table.theList thead th:last-of-type {
   border-right: none;
 }
-/* line 104, list.scss */
+/* line 106, list.scss */
 table.theList tr {
   border-bottom: 1px solid #cccccc;
   cursor: pointer;
 }
-/* line 107, list.scss */
+@media screen and (max-width: 790px) {
+  /* line 106, list.scss */
+  table.theList tr {
+    width: 100%;
+  }
+}
+/* line 112, list.scss */
 table.theList tr:hover {
   background: #e2f6f3;
 }
-/* line 111, list.scss */
+/* line 116, list.scss */
 table.theList td {
   text-align: center;
   padding: 5px 10px;
   border-right: 1px solid #cccccc;
 }
-@media screen and (max-width: 700px) {
-  /* line 111, list.scss */
+@media screen and (max-width: 790px) {
+  /* line 116, list.scss */
   table.theList td {
     display: block;
     position: relative;
-    border: 1px solid #cccccc;
+    border-bottom: 1px solid #cccccc;
+    width: 75%;
+    margin-left: 25%;
+    text-align: left;
+    min-height: 34px;
   }
 }
-/* line 120, list.scss */
+/* line 129, list.scss */
 table.theList td:last-of-type {
   border-right: none;
 }
-@media screen and (max-width: 700px) {
-  /* line 120, list.scss */
+@media screen and (max-width: 790px) {
+  /* line 129, list.scss */
   table.theList td:last-of-type {
     border-right: 1px solid #cccccc;
   }
 }
-@media screen and (max-width: 700px) {
-  /* line 126, list.scss */
+@media screen and (max-width: 790px) {
+  /* line 135, list.scss */
   table.theList td:before {
     content: attr(data-title);
     font-family: sans-serif;
-    text-align: left;
+    text-align: right;
     position: absolute;
-    top: 6px;
-    left: 6px;
-    width: 45%;
-    padding-right: 10px;
+    left: -34%;
+    top: 0;
+    display: block;
+    width: 31%;
+    min-height: 34px;
     white-space: nowrap;
-    padding-left: 5px;
-    border-right: 1px solid #999999;
+    padding: 5px;
     background: #b3b3b3;
   }
 }
-/* line 143, list.scss */
+/* line 152, list.scss */
 table.theList td.desc {
   width: 250px;
   text-align: left;
 }
-/* line 148, list.scss */
+@media screen and (max-width: 790px) {
+  /* line 152, list.scss */
+  table.theList td.desc {
+    width: 75%%;
+  }
+}
+/* line 160, list.scss */
 table.theList .bullet {
   font-family: 'print',sans-serif;
 }
-/* line 151, list.scss */
+/* line 163, list.scss */
 table.theList a {
   text-decoration: none;
   color: #3a4a3d;
   font-weight: 300;
 }
-/* line 155, list.scss */
+/* line 167, list.scss */
 table.theList a:hover {
   text-shadow: 0 0 2px #277f73;
 }
-/* line 159, list.scss */
+/* line 171, list.scss */
 table.theList .alerted {
   background: #f7d575;
 }
-/* line 162, list.scss */
+/* line 174, list.scss */
 table.theList .message {
   color: #c22d02;
 }
 
-/* line 166, list.scss */
+/* line 178, list.scss */
 tr:nth-child(odd) {
   background: rgba(255, 255, 255, 0.6);
 }
 
-/* line 173, list.scss */
+/* line 185, list.scss */
 footer {
   position: fixed;
   bottom: 0;
@@ -227,7 +248,14 @@ footer {
   border-radius: 0 10px 0 0;
   background: #a92702;
 }
-/* line 182, list.scss */
+@media screen and (max-width: 790px) {
+  /* line 185, list.scss */
+  footer {
+    position: static;
+    display: none;
+  }
+}
+/* line 198, list.scss */
 footer p {
   display: inline-block;
   color: #f7d575;
@@ -235,7 +263,7 @@ footer p {
   margin: 0;
   padding: 0;
 }
-/* line 189, list.scss */
+/* line 205, list.scss */
 footer button {
   border: none;
   background: #902102;
@@ -247,38 +275,38 @@ footer button {
   border-radius: 2px;
 }
 @media screen and (max-width: 650px) {
-  /* line 189, list.scss */
+  /* line 205, list.scss */
   footer button {
     display: block;
     width: 90%;
     margin: 2px auto;
   }
 }
-/* line 203, list.scss */
+/* line 219, list.scss */
 footer button:hover {
   background: #761b02;
   box-shadow: inset 0 0 10px #441001;
 }
-/* line 207, list.scss */
+/* line 223, list.scss */
 footer button:active {
   background: #441001;
   box-shadow: inset 0 0 15px black;
 }
 @media all and (max-width: 1175px) {
-  /* line 173, list.scss */
+  /* line 185, list.scss */
   footer {
     width: 50%;
   }
 }
 @media all and (max-width: 835px) {
-  /* line 173, list.scss */
+  /* line 185, list.scss */
   footer {
     width: 100%;
     border-radius: 0;
   }
 }
 
-/* line 220, list.scss */
+/* line 236, list.scss */
 .adminButton {
   position: fixed;
   top: 0;
@@ -294,17 +322,17 @@ footer button:active {
   opacity: .5;
   transition: all 200ms;
 }
-@media screen and (max-width: 650px) {
-  /* line 220, list.scss */
+@media screen and (max-width: 790px) {
+  /* line 236, list.scss */
   .adminButton {
-    right: 2px;
+    display: none;
   }
 }
-/* line 237, list.scss */
+/* line 253, list.scss */
 .adminButton:hover {
   opacity: 1;
 }
-/* line 240, list.scss */
+/* line 256, list.scss */
 .adminButton:active {
   background: linear-gradient(to top, #902102 0%, #902102 20%, #441001 100%);
   color: #fbebbd;
